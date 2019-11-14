@@ -17,6 +17,9 @@ exports.fetchGoogleResult = async (str, userId, channelId) => {
       channel_id: channelId
     }
     await queryModel.insertQuery(queryObj);
+    if (result.length === 0) {
+      return 'didn\'t get response from google api';
+    }
     const strResult = result.join(', ');
     logger.info('strResult: ', +strResult);
     return strResult;//   JSON.stringify(result);
@@ -35,7 +38,7 @@ exports.fetchRecentSearches = async (str, userId, channelId) => {
     records.map((obj) => {
       resultString.push(obj.query);
     })
-    if (resultString.length === records) {
+    if (resultString.length === 0) {
       return 'Nothing found in recent searches';
     }
     resultString = resultString.join(', ')
