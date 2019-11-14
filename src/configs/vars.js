@@ -1,9 +1,8 @@
-// const path = require('path');
-
-// require('dotenv-safe').load({
-//   path: path.join(__dirname, '../../.env.dev'),
-//   sample: path.join(__dirname, '../../.env.example'),
-// });
+const path = require('path');
+require('dotenv').config({
+  path: path.join(__dirname, '../../.env'),
+  sample: path.join(__dirname, '../../.env.example'),
+})
 
 const config = {
   DATABASE: {
