@@ -16,7 +16,8 @@ exports.fetchGoogleResult = async (str, userId, channelId) => {
       user_id: userId,
       channel_id: channelId
     }
-    const res = await queryModel.insertQuery(queryObj);
+    // const res = await 
+    queryModel.insertQuery(queryObj);
     const strResult = result.join(', ');
     logger.info('strResult: ', +strResult);
     return strResult;//   JSON.stringify(result);
