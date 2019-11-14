@@ -1,3 +1,10 @@
+// const path = require('path');
+
+// require('dotenv-safe').load({
+//   path: path.join(__dirname, '../../.env.dev'),
+//   sample: path.join(__dirname, '../../.env.example'),
+// });
+
 const config = {
   DATABASE: {
     HOST: process.env.DATABASE_HOST || 'localhost',
@@ -7,10 +14,11 @@ const config = {
     DATABASE: process.env.DATABASE_NAME || 'discord_bot',
   },
   DISCORD: {
-    TOKEN: process.env.DISCORD_TOKEN || 'NjQ0MDU4MzM3OTUyMTM3MjI4.Xcwupw.Jle2-HbOV6bKFzsnePY5mD2a0iA'
+    TOKEN: process.env.DISCORD_TOKEN
   },
   GOOGLE: {
     BASE_URL: 'https://app.zenserp.com/api/v2/search',
+    ZENSERP_KEY: process.env.ZENSERP_KEY
   }
 };
 

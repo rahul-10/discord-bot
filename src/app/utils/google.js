@@ -1,6 +1,6 @@
 const rp = require('request-promise');
 
-const { GOOGLE: { BASE_URL } } = require('../../configs/vars');
+const { GOOGLE: { BASE_URL, ZENSERP_KEY } } = require('../../configs/vars');
 
 exports.search = async (query) => {
   try {
@@ -9,7 +9,7 @@ exports.search = async (query) => {
       url: BASE_URL,
       headers: {
         'Content-Type': 'application/json',
-        'apikey': '327ce2d0-06b8-11ea-aa79-01716ca70952' // should be in env variable
+        'apikey': ZENSERP_KEY
       },
       body: JSON.stringify({
         q: query,
