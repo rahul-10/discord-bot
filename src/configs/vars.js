@@ -5,6 +5,9 @@
 // })
 
 const config = {
+  APP: {
+    PORT: process.env.PORT
+  },
   DATABASE: {
     HOST: process.env.DATABASE_HOST || 'localhost',
     PORT: process.env.DATABASE_PORT || 5432,
