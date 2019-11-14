@@ -1,0 +1,22 @@
+{
+  "name": "rahuldubey",
+  "version": "1.0.0",
+  "description": "My First Discord Bot",
+  "main": "src/index.js",
+  "author": "Rahul Dubey",
+  "scripts": {
+    "start": "node src/index.js",
+    "migrate:up": "./node_modules/knex/bin/cli.js --knexfile=./src/configs/knexfile.js migrate:latest",
+    "migrate:down": "./node_modules/knex/bin/cli.js --knexfile=./src/configs/knexfile.js migrate:rollback",
+    "seed:run": "./node_modules/knex/bin/cli.js --knexfile=./src/configs/knexfile.js seed:run"
+  },
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "knex": "^0.20.1",
+    "knex-postgis": "^0.9.0",
+    "pg": "^7.12.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "winston": "^3.2.1"
+  }
+}
