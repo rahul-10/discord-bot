@@ -12,36 +12,40 @@ const logger = require('./app/utils/logger');
 
 
 
-process
-  .on('SIGTERM', shutdown('SIGTERM'))
-  .on('SIGINT', shutdown('SIGINT'))
-  .on('uncaughtException', shutdown('uncaughtException'));
+// process
+//   .on('SIGTERM', shutdown('SIGTERM'))
+//   .on('SIGINT', shutdown('SIGINT'))
+//   .on('uncaughtException', shutdown('uncaughtException'));
 
-setInterval(() => {}, 1000);
-http.createServer((req, res) => res.end('hi'))
-  .listen(PORT, () => logger.info('Server started on port ' + PORT));
+// setInterval(() => {
+//   http.get('https://descord-chat-app.herokuapp.com/');
+// }, 2000);
+// http.createServer((req, res) => res.end('hi'))
+//   .listen(PORT, () => logger.info('Server started on port ' + PORT));
 
-function shutdown(signal) {
-  return (err) => {
-    console.log(`${signal}...`);
-    if (err) console.error(err.stack || err);
-    setTimeout(() => {
-      console.log('...waited 5s, exiting.');
-      process.exit(err ? 1 : 0);
-    }, 5000).unref();
-  };
-}
+// function shutdown(signal) {
+//   return (err) => {
+//     console.log(`${signal}...`);
+//     if (err) console.error(err.stack || err);
+//     setTimeout(() => {
+//       console.log('...waited 5s, exiting.');
+//       process.exit(err ? 1 : 0);
+//     }, 5000).unref();
+//   };
+// }
 
 
+app.get('/', function (req, res) {
+  res.send('Discord bot - Health Check')
+})
 
+app.listen(PORT, () => {
+  logger.info('Server started on port ' + PORT);
+})
 
-// app.get('/', function (req, res) {
-//   res.send('Discord bot - Health Check')
-// })
-
-// app.listen(PORT, () => {
-//   logger.info('Server started on port ' + PORT);
-// })
+setInterval(() => {
+  http.get('https://descord-chat-app.herokuapp.com/');
+}, 2000);
 
 // Initialize Discord Bot
 const bot = new Discord.Client({
