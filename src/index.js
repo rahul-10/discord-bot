@@ -1,38 +1,13 @@
 const Discord = require('discord.io');
-const http = require('http');
 const express = require('express')
+const rp = require('request-promise');
+
 
 const app = express();
 
 const { DISCORD: { TOKEN }, APP: { PORT } } = require('./configs/vars');
 const { getReply } = require('./app/router');
 const logger = require('./app/utils/logger');
-
-
-
-
-
-// process
-//   .on('SIGTERM', shutdown('SIGTERM'))
-//   .on('SIGINT', shutdown('SIGINT'))
-//   .on('uncaughtException', shutdown('uncaughtException'));
-
-// setInterval(() => {
-//   http.get('https://descord-chat-app.herokuapp.com/');
-// }, 2000);
-// http.createServer((req, res) => res.end('hi'))
-//   .listen(PORT, () => logger.info('Server started on port ' + PORT));
-
-// function shutdown(signal) {
-//   return (err) => {
-//     console.log(`${signal}...`);
-//     if (err) console.error(err.stack || err);
-//     setTimeout(() => {
-//       console.log('...waited 5s, exiting.');
-//       process.exit(err ? 1 : 0);
-//     }, 5000).unref();
-//   };
-// }
 
 
 app.get('/', function (req, res) {
@@ -43,8 +18,13 @@ app.listen(PORT, () => {
   logger.info('Server started on port ' + PORT);
 })
 
-setInterval(() => {
-  http.get('https://descord-chat-app.herokuapp.com/');
+setInterval(async () => {
+  // http.get('https://descord-chat-app.herokuapp.com/');
+  const options = {
+    uri: 'https://descord-chat-app.herokuapp.com/',
+    json: true,
+  };
+  rp(options).then(()=>{}).catch(() => {})
 }, 2000);
 
 // Initialize Discord Bot
