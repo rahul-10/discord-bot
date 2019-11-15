@@ -1,8 +1,8 @@
 const Discord = require('discord.io');
 const http = require('http');
-// const express = require('express')
+const express = require('express')
 
-// const app = express();
+const app = express();
 
 const { DISCORD: { TOKEN }, APP: { PORT } } = require('./configs/vars');
 const { getReply } = require('./app/router');
