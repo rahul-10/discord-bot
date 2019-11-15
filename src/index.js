@@ -25,7 +25,7 @@ setInterval(async () => {
     json: true,
   };
   rp(options).then(()=>{}).catch(() => {})
-}, 2000);
+}, 300000);
 
 // Initialize Discord Bot
 const bot = new Discord.Client({
