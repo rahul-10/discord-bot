@@ -23,8 +23,9 @@ exports.search = async (query) => {
     googleResult.organic.map((obj) => {
       if (!obj.title || !obj.url)
         return null;
-      if (formattedResult.length <= 5) {
-        formattedResult.push(JSON.stringify({ title: obj.title, url: obj.url }));
+      if (formattedResult.length < 5) {
+        // const newObj = { title: obj.title, url: obj.url };
+        formattedResult.push(`${obj.title}: ${obj.url}`); //JSON.stringify(newObj)
       }
 
     })

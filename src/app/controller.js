@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const logger = require('./utils/logger');
 const queryModel = require('./query.model');
 const { search } = require('./utils/google');
@@ -10,6 +11,9 @@ exports.fetchGoogleResult = async (str, userId, channelId) => {
   try {
     // fetch records from google
     const result = await search(str);
+    if (typeof result === 'string') {
+      return result;
+    }
     // insert str into db
     const queryObj = {
       query: str,
@@ -21,8 +25,8 @@ exports.fetchGoogleResult = async (str, userId, channelId) => {
       return 'didn\'t get response from google api';
     }
     const strResult = result.join(', ');
-    logger.info('strResult: ', +strResult);
-    return strResult;//   JSON.stringify(result);
+    // logger.info('strResult: ', +strResult);
+    return strResult; //JSON.stringify(result);
   } catch (err) {
     return err.message || 'Something went wrong';
   }
@@ -41,6 +45,7 @@ exports.fetchRecentSearches = async (str, userId, channelId) => {
     if (resultString.length === 0) {
       return 'Nothing found in recent searches';
     }
+    resultString = _.uniq(resultString);
     resultString = resultString.join(', ')
     logger.info('resultString: ', +resultString);
     return resultString;
